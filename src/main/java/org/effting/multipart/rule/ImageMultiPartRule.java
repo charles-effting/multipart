@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.effting.multipart.MultiPartFileContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import br.com.staroski.rules.Specification;
 import br.com.staroski.rules.UnattendedException;
@@ -25,8 +23,6 @@ public class ImageMultiPartRule implements Specification<MultiPartFileContext> {
 		SUPPORTS.add("image/pjpeg");
 	}
 	
-	private final Logger logger = LoggerFactory.getLogger(ImageMultiPartRule.class);
-	
 	/**
 	 * 
 	 */
@@ -40,9 +36,6 @@ public class ImageMultiPartRule implements Specification<MultiPartFileContext> {
 		
 		// Check if the content type is supported.
 		if (!SUPPORTS.contains(contentType)) {
-			// Log.
-			logger.debug(String.format("The content type '%s' is not supported", contentType));
-			
 			// Add a brief detail.
 			throw new UnattendedException("O arquivo enviado não é suportado.");
 		}
